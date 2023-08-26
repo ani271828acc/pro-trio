@@ -1,0 +1,19 @@
+<snippet>
+	<content><![CDATA[
+ll n;vector<vector<ll>> g;vector<ll> par,stp;
+
+void dfs(ll nd,ll pp){
+	stp[nd]=1; //Assign Inital
+	for(auto v:g[nd]){
+		if(v==pp) continue;
+		dfs(v,nd);
+		stp[nd]+=stp[v]; //Update
+	}
+}
+//Push dfs(root, parent of root).
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>SubTreeParameter</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

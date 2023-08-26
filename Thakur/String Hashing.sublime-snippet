@@ -1,0 +1,21 @@
+<snippet>
+	<content><![CDATA[
+//p: 31(for only lowercase),53 (for both lower and uppercase) | m:{1e9+7,1e9+9}
+//typ=1 (for only lowercase), 53 (for both lower and uppercase)
+ll compute_hash(string s,ll typ,ll m=1e9+7){
+    ll p=(typ==1)?31LL:53LL;
+    ll hash=0;ll pp=1;
+    for(char c:s){
+        hash=(hash + (c-'a'+1)*pp)%m;
+        pp=(pp*p)%m;
+    }
+    return hash;
+}
+
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>String Hashing</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

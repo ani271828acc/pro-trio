@@ -1,0 +1,41 @@
+<snippet>
+	<content><![CDATA[
+//Graph is 3D Vector/Array
+void bellman_ford(ll n,ll sc,vl &dis=dis,vl &aff=aff){ll i,j;
+    ll large=1e16;
+    dis.assign(n+1,2*large);//distance array
+    aff.assign(n+1,0);//if affected by negative cycle
+    dis[sc]=0;
+    queue<ll> q;vl diss(n+1,2*large);
+    for(i=0;i<=n;i++){
+        for(j=0;j<m;j++){
+            ll a=edges[j][0],b=edges[j][1],c=edges[j][2];
+            if(dis[a]<large and dis[b]>(dis[a]+c)){
+                dis[b]=max(dis[a]+c,-large);
+                if(i==n){
+                    aff[b]=1;
+                    q.push(b);
+                    diss[b]=0;
+                }
+            }
+        }
+    }
+
+    //finding nodes affected by negative cycle(s)
+    while(!q.empty()){
+        ll nd=q.front();q.pop();
+        for(auto x:g[nd]){
+            if(diss[x[0]] > diss[nd]+1){
+                diss[x[0]]=diss[nd]+1;
+                q.push(x[0]);
+                aff[x[0]]=1;
+            }
+        }
+    }
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>Bellman-Ford</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

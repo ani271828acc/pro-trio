@@ -1,0 +1,26 @@
+<snippet>
+	<content><![CDATA[
+struct RK{
+    string s;vl phash;ll n,p,m=1e9+7;
+    RK(string S,ll typ){
+        s=S;p=(typ==1)?31LL:53LL;
+        n=s.size();phash.resize(n+1,0);ll pp=1;
+        for(int i=0;i<n;i++){
+            phash[i+1]=(phash[i]+(s[i]-'a'+1)*pp)%m;
+            pp=(pp*p)%m;
+        }
+    }
+    ll rng(ll st,ll ed){
+        ll h1=sub(phash[ed+1],phash[st],m);
+        h1=divi(h1,PowI(31LL,st,m));
+        return h1;
+    }
+};
+//To build RK: RK _name(string,typ) | typ=1(lowwercase),2(lower+uppercase)
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>Robin-Karp String Matching</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

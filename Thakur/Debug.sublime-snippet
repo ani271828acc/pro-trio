@@ -1,0 +1,23 @@
+<snippet>
+	<content><![CDATA[
+#define cg          cout<<"||"<<flush
+#define lg          cout<<"---------"<<endl
+#define el          "\n"
+#define sp          " "
+#define ell         cout<<endl
+#define dbg(x)      cout<<#x<<": "<<x<<" "<<flush
+#define db1(x)      cout<<#x<<": "<<x<<flush
+#define db2(x)      cout<<#x<<":"<<endl<<x
+
+template <typename A, typename B> ostream& operator<<(ostream &os, const pair<A, B> &p) {return os<<'('<<p.first<<", "<<p.second<<')';}
+template <typename T_container, typename T = typename enable_if<!is_same<T_container, string>::value, typename T_container::value_type>::type> ostream& operator<<(ostream &os, const T_container &v) {os<<" ";string sep;for(const T &x:v) os<<sep<<x,sep=" ";return os<<endl;}
+template <typename A> ostream& operator<< (ostream &cout, vector<A> const &v) {cout<<" ";for(int i=0;i<v.size();i++){if (i) cout<<" ";cout<<v[i];} return cout<<endl;}
+template <typename A, typename B> istream& operator>> (istream& cin, pair<A, B> &p) {cin>>p.first; return cin>>p.second;}
+template <typename A> istream& operator>> (istream& cin, vector<A> &x){for(int i=0;i<x.size()-1;i++) cin>>x[i];return cin>>x[x.size()-1];}
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>debug</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

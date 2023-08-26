@@ -1,0 +1,34 @@
+<snippet>
+	<content><![CDATA[
+//Binary Exponentiation Power Function
+ll PowI(ll a,ll b,ll m)
+{ll ans=1%m;while(b>0){if(b%2) ans=(((ans%m)*(a%m))%m);
+a=(((a%m)*(a%m))%m); b=(ll)(b/((ll)2));}return ans;}
+
+//Creating factorial array
+vector <ll> fact,invfact;
+void facting(ll n=1e6+5,ll mod=remi){
+    fact.resize(n+1,1);invfact.resize(n+1,1);ll i;
+    for(i=1;i<=n;i++){
+        fact[i]=(((i%mod)*(fact[i-1]%mod))%mod);
+    }i--;
+    invfact[i]=PowI(fact[i],mod-2,mod);
+    for(i--;i>=0;i--){
+        invfact[i]=invfact[i+1]*(i+1)%mod;
+    }
+}
+
+//nCr Function
+ll nCr(ll n,ll r,ll mod=remi){
+    if(fact.size()==0) facting();
+    if(r>n or r<0 or n<0) return 0;
+    ll ans=(((fact[n]*invfact[r])%mod)*invfact[n-r])%mod;
+    return ans;
+}
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>nCr</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

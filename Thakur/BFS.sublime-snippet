@@ -1,0 +1,31 @@
+<snippet>
+	<content><![CDATA[
+void bfs(ll n,vl &node,vl &dis=dis,vl &par=par){
+    dis.clear();dis.assign(n+1,large);
+    par.clear();par.assign(n+1,-1);
+    queue<ll> q;
+    for(int i=0;i<node.size();i++){
+        q.push(node[i]);dis[node[i]]=0;
+        par[node[i]]=-2;
+    }
+    while(!q.empty()){
+        ll nd=q.front();q.pop();
+        for(int x:g[nd]){
+            if(dis[x]>dis[nd]+1){
+                dis[x]=dis[nd]+1;
+                par[x]=nd;
+                q.push(x);
+            }
+        }
+    }
+}
+//1 Indexed BFS with Multi-Source Capabilities
+//Parameters: n=no. of nodes,node=source node(s)
+// dis,par=distance,parent vector that you wish to make changes to.
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>BFS</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

@@ -1,0 +1,43 @@
+<snippet>
+	<content><![CDATA[
+vector<ll> manacher_odd(string s) {
+    ll n = s.size();
+    s="&"+s+"@";
+    vector<ll> p(n + 2);
+    ll l=1,r=1;
+    for(ll i=1;i<=n;i++){
+        p[i]=max(0LL,min(r-i,p[l+(r-i)]));
+        while(s[i-p[i]]==s[i+p[i]]){
+            p[i]++;
+        }
+        if(i+p[i]>r){
+            l=i-p[i],r=i+p[i];
+        }
+    }
+    return vector<ll>(begin(p)+1,end(p)-1);
+}
+
+vector<vector<ll> > manacher(string s) {
+    string t;
+    for(auto c:s){
+        t+=string("#")+c;
+    }
+    auto res=manacher_odd(t + "#");
+    db1(res);
+    vector<ll> odd,even;
+    for(ll i=1;i+1<res.size();i++){
+        if(i%2==1){//odd
+            odd.push_back((res[i]-1)/2);
+        }else{//even
+            even.push_back(res[i]/2);
+        }
+    }
+    return {odd,even};
+}
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>Manacher</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

@@ -1,0 +1,15 @@
+<snippet>
+	<content><![CDATA[
+void print_g(vector<vector<ll>> g){
+	for(int i=0;i<g.size();i++){
+		for(int j=0;j<g[i].size();j++){
+			cout<<i<<sp<<g[i][j]<<el;
+		}
+	}
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>Print Graph</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

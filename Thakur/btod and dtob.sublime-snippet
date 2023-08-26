@@ -1,0 +1,26 @@
+<snippet>
+	<content><![CDATA[
+const ll bits=60;
+bitset<bits> dtob(ll n){//Decimal to Binary.
+    bitset<bits> ans=n;
+}//To call: bitset<bits> N=dtob(n);
+ll btod(bitset<bits> v){//Binary to Decimal.
+    ll ans=v.to_ullong();
+    return ans;
+}//To call: ll n=btod(N);
+void pbin(bitset<bits> v){
+    for(int i=0;i<bits;i++) cout<<v[i];
+    cout<<endl;
+}
+vector<ll> bTOv(bitset<bits> B){//Bitset to Vector
+    vector<ll> v(bits);
+    for(int i=0;i<bits;i++) v[i]=B[bits-1-i];
+    return v;
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>btod and dtob</tabTrigger>
+	<description>Binary and Decimal</description>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

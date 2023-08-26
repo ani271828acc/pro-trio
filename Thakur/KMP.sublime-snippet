@@ -1,0 +1,19 @@
+<snippet>
+	<content><![CDATA[
+void KMP(string s){
+    ll n=s.length();
+    vector<ll> lps(n+1);lps[0]=-1;
+    ll i=0,j=-1;
+    while(i<n){
+        while(j!=-1 and s[i]!=s[j]) j=lps[j];
+        i++;j++;lps[i]=j;
+    }
+    // More code here
+}
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>KMP</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

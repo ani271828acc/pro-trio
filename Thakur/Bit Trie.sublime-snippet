@@ -1,0 +1,76 @@
+<snippet>
+	<content><![CDATA[
+struct node{
+    node* child[2];
+    ll pre,val;
+    node(){
+        child[0]=NULL;child[1]=NULL;
+        pre=val=0;
+    }
+};
+struct Btrie{
+    node* root;
+    ll bits=40;
+    trie(){
+        root=new node;
+    }
+    trie(ll b){
+        root=new node;
+        bits=b;
+    }
+    void insert(ll num){
+        node* temp=root;
+        for(ll i=bits-1;i>=0;i--){
+            (temp->pre)++;
+            ll val=((num>>i)&1);
+            if(temp->child[val]==NULL){
+                temp->child[val]=new node;
+            }
+            temp=temp->child[val];
+        }
+        temp->val=num;
+    }
+    void erase(ll num){
+        node* temp=root;
+        for(ll i=bits-1;i>=0;i--){
+            (temp->pre)--;
+            ll val=((num>>i)&1);
+            temp=temp->child[val];
+        }
+        (temp->pre)--;
+    }
+    ll pre_match(ll num){
+        node* temp=root;
+        for(ll i=bits-1;i>=0;i--){
+            ll val=((num>>i)&1);
+            if(temp->child[val]==NULL) return 0;
+            temp=temp->child[val];
+        }
+        return temp->pre;
+    }
+    ll MAX_XOR(ll num){
+        node* temp=root;
+        ll ans=0;
+        for(ll i=bits-1;i>=0;i--){
+            ll val=((num>>i)&1);
+            if(temp->child[1^val]!=NULL and (temp->child[1^val]->pre)>0){
+                temp=temp->child[1^val];
+                ans+=(1LL<<i);
+            }else if(temp->child[val]!=NULL and (temp->child[val]->pre>0)){
+                temp=temp->child[val];
+            }else{
+                return -1;
+            }
+        }
+        return ans;
+    }
+    void fun(){
+        //make your function here.
+    }
+};
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>Bit-Trie</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

@@ -1,0 +1,14 @@
+<snippet>
+	<content><![CDATA[
+void bp(ll n,ll bits=32){
+    for(int i=bits;i>=0;i--)
+        cout<<((n>>i)&(1));
+    cout<<sp;
+}
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>Binary Printing</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

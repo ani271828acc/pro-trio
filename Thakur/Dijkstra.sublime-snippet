@@ -1,0 +1,35 @@
+<snippet>
+	<content><![CDATA[
+//Graph is 3D Vector, not V<V<pll>>
+void dijkstra(ll n,vl &node,vl &dis=dis,vl &par=par){
+    dis.clear();dis.assign(n+1,inf);
+    par.clear();par.assign(n+1,-1);
+    multiset<vl> ms;
+    for(int i=0;i<node.size();i++){
+        ms.insert({0,node[i]});dis[node[i]]=0;
+        par[node[i]]=-1;
+    }
+    vector<bool> vis(n+1,false);
+    while(!ms.empty()){
+        vl pr=*ms.begin();ms.erase(ms.find(pr));
+        ll nd=pr[1];
+        if(vis[nd]) continue; vis[nd]=true;
+        for(auto x:g[nd]){
+            if(dis[x[0]] >dis[nd]+x[1]){
+                dis[x[0]]=dis[nd]+x[1];
+                par[x[0]]=nd;
+                ms.insert({dis[x[0]],x[0]});
+            }
+        }
+    }
+}
+//1 Indexed Dijkstra with Multi-Source Capabilities
+//Parameters: n=no. of nodes,node=source node(s)
+// dis,par=distance,parent vector that you wish to make changes to.
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>Dijkstra</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

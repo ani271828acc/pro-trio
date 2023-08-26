@@ -1,0 +1,42 @@
+<snippet>
+	<content><![CDATA[
+#include "testlib.h"
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+char FNO[11];string fno;
+void fun(int I){
+    fno.clear();
+    while(I>0){
+        char rem='0'+(I%10);
+        fno+=rem;
+        I/=10;
+    }
+    reverse(fno.begin(),fno.end());
+    if(fno.size()==1) fno="0"+fno;
+    fno="input"+fno;fno+=".txt";
+    // cout<<fno<<" "<<fno.size()<<endl;
+    for(int j=0;j<fno.size();j++){
+        FNO[j]=fno[j];
+    }
+}
+
+int main(int argc,char* argv[]){
+    registerGen(argc, argv, 1);
+    int test=49,samples=1;
+    //test is number of testcases and samples is number of samples
+    
+    for(int i=0;i<test;i++){
+        int I=i+samples;fun(I);
+        ofstream fout(FNO);
+        //conditions follow
+    }
+}
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>Testcase Generation</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>
