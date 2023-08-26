@@ -1,0 +1,23 @@
+<snippet>
+	<content><![CDATA[
+class xorshift {
+public:
+	using ll=unsigned long long;
+	ll state;
+	xorshift(ll seed) {
+		state=seed;
+	}
+	ll random() {
+	    state ^= state >> 12;
+	    state ^= state << 25;
+	    state ^= state >> 27;
+	    state *= 0x2545F4914F6CDD1DULL;
+	    return state;
+	}
+};
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>!rng_xorshift</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

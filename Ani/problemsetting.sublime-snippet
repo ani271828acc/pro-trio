@@ -1,0 +1,25 @@
+<snippet>
+	<content><![CDATA[
+(submitted to )
+
+Problem Statement:
+
+Constraints: 
+
+Intended Solution: 
+
+Time complexity:
+
+Pre-Requisite:
+
+Variations:
+
+Inspiration:
+
+Expected Difficulty:
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>!problemsetting</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>
